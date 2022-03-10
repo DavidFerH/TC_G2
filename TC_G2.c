@@ -9,6 +9,7 @@
 // Prototipos de las funciones
 void notaFinal(float notas[a][b]);
 void maxMinMedia(float notas[a][b]);
+void listPruebasNotas(float notas[a][b]);
 
 // Funcion main
 void main() {
@@ -36,6 +37,10 @@ void main() {
     
     case 2:
         maxMinMedia(aNotas);
+        break;
+
+    case 3:
+        listPruebasNotas(aNotas);
         break;
 
     default:
@@ -85,4 +90,14 @@ void maxMinMedia(float notas[a][b]) {
     }
 
     return;
+}
+
+void listPruebasNotas(float notas[a][b]) {
+    for(int i = 0; i < 4; i++) {
+        printf("Listado de notas de la prueba %d", i + 1);
+        for(int j = 0; j < 10; j++) {
+            printf("\nAlumno %d: %f", j + 1, notas[j][i]);
+        }
+        printf("\n");
+    }
 }
