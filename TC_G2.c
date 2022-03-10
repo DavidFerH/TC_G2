@@ -58,7 +58,7 @@ void notaFinal(float notas[a][b]) {
         for(int j = 0; j < 4; j++) {
             suma = suma + notas[i][j];
         }
-        printf("\nLa media del alunno %d es: %.1f", i + 1, (suma / b));
+        printf("\nLa media del alunno %d es: %.2f", i + 1, (suma / b));
         suma = 0;
     }
 
@@ -80,9 +80,9 @@ void maxMinMedia(float notas[a][b]) {
                 min = notas[j][i];
             }
         }
-        printf("\nLa media de la asignatura %d es: %.1f", i + 1, (suma / a));
-        printf("\nLa nota maxima de la asignatura %d es: %.1f", i + 1, max);
-        printf("\nLa nota minima de la asignatura %d es: %.1f", i + 1, min);
+        printf("\nLa media de la asignatura %d es: %.2f", i + 1, (suma / a));
+        printf("\nLa nota maxima de la asignatura %d es: %.2f", i + 1, max);
+        printf("\nLa nota minima de la asignatura %d es: %.2f", i + 1, min);
 
         max = 0;
         min = 0;
@@ -93,11 +93,19 @@ void maxMinMedia(float notas[a][b]) {
 }
 
 void listPruebasNotas(float notas[a][b]) {
+    int aprobados = 0;
+
     for(int i = 0; i < 4; i++) {
         printf("Listado de notas de la prueba %d", i + 1);
         for(int j = 0; j < 10; j++) {
-            printf("\nAlumno %d: %f", j + 1, notas[j][i]);
+            printf("\nAlumno %d: %.2f", j + 1, notas[j][i]);
+            if(notas[j][i] >= 5) {
+                aprobados++;
+            }
         }
+        printf("\nEl numero de aprobados en la prueba %d es de %d", i + 1, aprobados);
+        printf("\nEl numero de suspensos en la prueba %d es de %d", i + 1, a - aprobados);
         printf("\n");
+        aprobados = 0;
     }
 }
