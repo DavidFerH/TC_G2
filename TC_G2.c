@@ -10,6 +10,7 @@
 void notaFinal(float notas[a][b]);
 void maxMinMedia(float notas[a][b]);
 void listPruebasNotas(float notas[a][b]);
+void cambiarPonderacion(float notas[a][b]);
 
 // Funcion main
 void main() {
@@ -41,6 +42,10 @@ void main() {
 
     case 3:
         listPruebasNotas(aNotas);
+        break;
+
+    case 4:
+        cambiarPonderacion(aNotas);
         break;
 
     default:
@@ -107,5 +112,44 @@ void listPruebasNotas(float notas[a][b]) {
         printf("\nEl numero de suspensos en la prueba %d es de %d", i + 1, a - aprobados);
         printf("\n");
         aprobados = 0;
+    }
+}
+
+// Esta parte no funciona
+
+void cambiarPonderacion(float notas[a][b]) {
+    int arrayPonderaciones[4] = {25, 25, 25, 25}, suma[4];
+
+    do {
+        printf("Introduzca las nuevas ponderacion (entre 10 y 60)");
+        scanf("%d %d %d %d", &arrayPonderaciones[0], &arrayPonderaciones[1], &arrayPonderaciones[2], &arrayPonderaciones[3]);
+
+        if(
+            arrayPonderaciones[0] < 10 || arrayPonderaciones[0] > 60 ||
+            arrayPonderaciones[1] < 10 || arrayPonderaciones[1] > 60 ||
+            arrayPonderaciones[2] < 10 || arrayPonderaciones[2] > 60 ||
+            arrayPonderaciones[3] < 10 || arrayPonderaciones[3] > 60
+        ) {
+            printf("La ponderacion introducida no es valida");
+        }
+
+    } while (
+        arrayPonderaciones[0] >= 10 || arrayPonderaciones[0] <= 60 ||
+        arrayPonderaciones[1] >= 10 || arrayPonderaciones[1] <= 60 ||
+        arrayPonderaciones[2] >= 10 || arrayPonderaciones[2] <= 60 ||
+        arrayPonderaciones[3] >= 10 || arrayPonderaciones[3] <= 60
+    );
+    
+
+
+    if(arrayPonderaciones[0] + arrayPonderaciones[1] + arrayPonderaciones[2] + arrayPonderaciones[3] != 100) {
+        printf("La suma de las ponderaciones no es valida");
+    } else {
+        for(int i = 0; i < 10; i++) {
+            for(int j = 0; j < 4; j++) {
+                suma[j] = notas[i][j];
+            }
+        printf("\nLa media del alumno %d es: %.2f", i + 1, (suma[0] * (arrayPonderaciones[0] / 100)) + (suma[1] * (arrayPonderaciones[1] / 100)) + (suma[2] * (arrayPonderaciones[2] / 100)) + (suma[3] * (arrayPonderaciones[3] / 100)));
+    }
     }
 }
