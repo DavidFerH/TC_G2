@@ -2,11 +2,11 @@
 #include <stdlib.h>
 #include <time.h>
 
-// Definiciones
+// Definiciones macro
 #define a 10
 #define b 4
 
-// Prototipos de las funciones
+// Prototipos de las funciones.
 void notaFinal(float notas[a][b],int aPonderacion[b]);
 void maxMinMedia(float notas[a][b]);
 void listPruebasNotas(float notas[a][b]);
@@ -14,7 +14,7 @@ void cambiarPonderacion(int arrayPonderaciones[b]);
 
 // Funcion main
 void main() {
-    // Declaracion de las variables
+    // Declaracion de las variables.
     float aNotas[a][b];
     int seleccion;
     int aPonderacion[b] = {25, 25, 25, 25};
@@ -22,6 +22,11 @@ void main() {
 
 
     // Insercion de las notas
+    /*
+    Ejecutaremos este bucle que recorre las 4 notas de los 10 alumnos siempre que el dato isntertado por el usuario
+    sea mayor o igual que 0 o menor o igual que 10. Si esta condicion no se cumple, se pedira de nuevo la calificacion
+    del alumno que se ha introducido equivocamente.
+    */
     for (int i = 0; i < a; i++) {
         for (int j = 0; j < b; j++) {
             do {
@@ -35,6 +40,12 @@ void main() {
             } while(aNotas[i][j] < 0 || aNotas[i][j] > 10);
         }
     }
+
+    // Peticion de seleccion de la opcion al usuario
+    /*
+    Ejecutaremos este bucle mientras el valor de la seleccion introducida por el usuario sea distinta de 5. Si el valor introducido no comprende entre los valores 1 y 4,
+    se mostrara por pantalla un mensaje de error.
+    */
 
     do {
         // Muestra por pantalla de las distintas opciones
@@ -67,22 +78,47 @@ void main() {
     } while(seleccion != 5);
 }
 
+// Funcion notaFinal
+
+/*
+Esta funcion nos mostrara por pantalla la nota final de cada alumno teniendo en cuenta las ponderaciones de cada prueba.
+*/
+
 void notaFinal(float notas[a][b], int aPonderacion[b]) {
+    // Declaracion de la variable
     float suma = 0;
 
+    /*
+    Bucle que recorre el array alumno por alumno (j) y añade a la variable suma (variable que arrastra las sumas de las 4 pruebas)
+    el valor de la prueba multiplicado por el porcentaje correspondiente a la ponderacion de la misma.
+    Al finalizar el calculo de la nota de cada alumno se muestra por pantalla el resultado.
+    */
     for(int i = 0; i < a; i++) {
         for(int j = 0; j < b; j++) {
-            suma = suma + (notas[i][j] * (aPonderacion[j] / 100));
+            suma = suma + notas[i][j] * aPonderacion[j] / 100;
         }
         printf("\nLa media del alumno %d es: %.2f", i + 1, (suma));
         suma = 0;
     }
 }
 
+// funcion MaxMinMedia
+/*
+Esta funcion nos muestra la nota maxima, minima y la media por asigntura.
+*/
+
 void maxMinMedia(float notas[a][b]) {
+    // Declaracion de las variables
     float max = 0, min = 0, suma = 0;
 
+    // Bucle que recorre el array asignatura por asignatura (i) y haya el valor maximo y minimo, asi como la media aritmetica de las calificaciones de dicha asignatura.
     for(int i = 0; i < b; i++) {
+        /* 
+        Seteo de las variables max y min. Inicializamos la nota minima como el primer elemento de la asignatura ya que si lo 
+        hiciesemos en 0, no podriamos haya una nota con un valor minimo que 0. Inicializamos la nota maxima a 0 para que pueda
+        encontrar un valor valido.
+        Una vez recorrida la asignatura, se muestran por pantalla las diferentes notas.
+        */
         min = notas[0][i];
         max = 0;
         for(int j = 0; j < a; j++) {
@@ -106,9 +142,21 @@ void maxMinMedia(float notas[a][b]) {
     }
 }
 
+// Funcion listaPruebaNotas
+/*
+Esta funcion lista las notas de cada prueba, asi como el numero de aprobados y suspensos de la misma.
+*/
+
 void listPruebasNotas(float notas[a][b]) {
+    // Declaracion de la variable
     int aprobados = 0;
 
+    /*
+    Bucle que recorre el array asignaturas asignatura por asignatura (i) e imprime las notas de cada asignatura.
+    La condicion if evalua si la nota leida del array es mayor o igual a 5, si es asi, suma 1 a la variable aprobados.
+    Una vez finalizada la asignatura, imprime por pantalla el valor de la variable aprobados, y calcula la de suspensos como a(10) - aprobados.
+    Resete la variable aprobados a 0.
+    */
     for(int i = 0; i < b; i++) {
         printf("Listado de notas de la prueba %d", i + 1);
         for(int j = 0; j < a; j++) {
@@ -126,9 +174,15 @@ void listPruebasNotas(float notas[a][b]) {
 }
 
 
-//Metodo para cambiar la ponderacion con los valores introducidos por el usuario
+//Funcion cambiarPonderacion
+/*
+Esta funcion nos permite cambiar las ponderaciones de cada prueba.
+*/
 void cambiarPonderacion(int arrayPonderaciones[]) {
-
+    /*
+    Bucle que se ejecuta siempre y cuanto alguna de las nuevas ponderaciones introducidas sea inferior a 10 o mayor que 60, o
+    que la suma total de las ponderaciones no sea igual a 100
+    */
     do {
         printf("Introduzca las nuevas ponderacion (entre 10 y 60)\n");
         scanf("%d %d %d %d", &arrayPonderaciones[0], &arrayPonderaciones[1], &arrayPonderaciones[2], &arrayPonderaciones[3]);
