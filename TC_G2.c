@@ -46,7 +46,6 @@ void main() {
     Ejecutaremos este bucle mientras el valor de la seleccion introducida por el usuario sea distinta de 5. Si el valor introducido no comprende entre los valores 1 y 4,
     se mostrara por pantalla un mensaje de error.
     */
-
     do {
         // Muestra por pantalla de las distintas opciones
         printf("\n--- MENU DE SELECCION ---\n1- Nota final por alumno\n2- Notas maxima, minima y media por prueba\n3- Listado de pruebas y notas\n4- Modificacion de ponderacion de notas\n5- Salir del programa\n");
@@ -83,7 +82,6 @@ void main() {
 /*
 Esta funcion nos mostrara por pantalla la nota final de cada alumno teniendo en cuenta las ponderaciones de cada prueba.
 */
-
 void notaFinal(float notas[a][b], int aPonderacion[b]) {
     // Declaracion de la variable
     float suma = 0;
@@ -106,7 +104,6 @@ void notaFinal(float notas[a][b], int aPonderacion[b]) {
 /*
 Esta funcion nos muestra la nota maxima, minima y la media por asigntura.
 */
-
 void maxMinMedia(float notas[a][b]) {
     // Declaracion de las variables
     float max = 0, min = 0, suma = 0;
@@ -146,7 +143,6 @@ void maxMinMedia(float notas[a][b]) {
 /*
 Esta funcion lista las notas de cada prueba, asi como el numero de aprobados y suspensos de la misma.
 */
-
 void listPruebasNotas(float notas[a][b]) {
     // Declaracion de la variable
     int aprobados = 0;
