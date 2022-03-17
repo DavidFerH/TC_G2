@@ -182,8 +182,8 @@ void cambiarPonderacion(int arrayPonderaciones[]) {
     do {
         printf("Introduzca las nuevas ponderacion (entre 10 y 60)\n");
         scanf("%d %d %d %d", &arrayPonderaciones[0], &arrayPonderaciones[1], &arrayPonderaciones[2], &arrayPonderaciones[3]);
-
-        if ( //comprobacion de valor entre 10 y 60
+        //comprobacion de valor entre 10 y 60
+        if (
             arrayPonderaciones[0] < 10 || arrayPonderaciones[0] > 60 ||
             arrayPonderaciones[1] < 10 || arrayPonderaciones[1] > 60 ||
             arrayPonderaciones[2] < 10 || arrayPonderaciones[2] > 60 ||
@@ -193,8 +193,8 @@ void cambiarPonderacion(int arrayPonderaciones[]) {
         } else if (arrayPonderaciones[0] + arrayPonderaciones[1] + arrayPonderaciones[2] + arrayPonderaciones[3] != 100) { //comprobar que la suma de ponderaciones sea 100
             printf("La suma de las ponderaciones no es valida\n");
         }
-
-    } while (//bucle para comprobar que el valor de ponderaciones esta entre 10 y 60 y su suma da 100
+        //bucle para comprobar que el valor de ponderaciones esta entre 10 y 60 y su suma da 100
+    } while (
         arrayPonderaciones[0] < 10 || arrayPonderaciones[0] > 60 ||
         arrayPonderaciones[1] < 10 || arrayPonderaciones[1] > 60 ||
         arrayPonderaciones[2] < 10 || arrayPonderaciones[2] > 60 ||
